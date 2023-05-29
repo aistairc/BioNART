@@ -18,7 +18,7 @@ cd ..
 qsub -g GROUPNAME job_pretraining.sh
 ```
 
-## Fine-tuning
+## Fine-tuning on Biomedical Text Generation tasks
 ```
 qsub -g GROUPNAME job_bio_generation.sh
 ```
