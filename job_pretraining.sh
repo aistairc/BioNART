@@ -1,13 +1,13 @@
 #!/bin/bash
 
-#$ -l rt_AF=1
-#$ -l h_rt=3:00:00
+#$ -l rt_AF=2
+#$ -l h_rt=10:00:00
 #$ -j y
 #$ -cwd
 
 source /etc/profile.d/modules.sh
 source ~/venv/pytorch2/bin/activate
-module load gcc
+module load gcc/8.3.1
 module load python/3.10
 module load cuda/11.7
 module load cudnn/8.4
@@ -16,8 +16,7 @@ export OMP_NUM_THREADS=1
 export NUM_GPUS_PER_NODE=$(nvidia-smi --query-gpu=name --format=csv,noheader | wc -l)
 export HF_DATASETS_CACHE="/scratch/aae15163zd/cache/huggingface/datasets"
 
-python_cmd="train_bio_summarization.py"
-#python_cmd="train_bio_dialogue.py"
+python_cmd="pretrain.py"
 
 # launch on slave nodes
 node_rank=1
